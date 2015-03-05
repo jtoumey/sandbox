@@ -2,17 +2,42 @@
 #include <math.h>
 
 double f(double);
+double get_input();
 
 int main(void)
 {
    // Variable declarations
-   double x;
-   double y;
+   double x,y;
    
-   x = 10.;
+
+   // Collect input
+   x = get_input();
+
+   // Calculate the result
    y = f(x);
+
+   // Print results
+
    printf("Function f is: %d",y);
    return 0;
+}
+
+/********************************
+/                               /
+/ Function Definitions          /
+/                               /
+********************************/
+
+double get_input()
+{
+   // Variable declarations
+   double arg;
+
+   // Read input
+   printf("Enter argument: \n");
+   scanf ("%lf",arg);
+
+   return(arg);
 }
 
 double f(double x)
