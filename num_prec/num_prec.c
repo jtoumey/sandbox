@@ -1,3 +1,24 @@
+/**************************************************************************
+/                                                                         /
+/  Module:       num_prec.c                                               /
+/                                                                         /
+/  Programmer:   Julian M. Toumey                                         /
+/                Madison, WI                                              /
+/                                                                         /
+/  Date:         March 2015                                               /
+/                                                                         /
+/  Language:     C                                                        /
+/                                                                         /
+/  Description:  This code demonstrates the failure of mathematical       /
+/                operations when operating with finite precision.         /
+/                Specifically -- the EXP and LOG operations. This example /
+/                is adapted from the John D. Cook article 'Overflow and   /
+/                loss of precision' [1].                                  /
+/                                                                         / 
+/ [1]  www.johndcook.com/blog/2008/04/16/overflow-and-loss-of-precision/  /
+/                                                                         /
+**************************************************************************/
+
 #include <stdio.h>
 #include <math.h>
 
@@ -49,6 +70,20 @@ double f(double x)
    // Variable declarations
    double y;
    
+   /* This function naively calculates the exponential of the input, adds 1, and then
+   /  takes the natural log. One might expect a value slightly large than the input
+   /  argument x. In some cases, this fails: 
+         
+         Large x:    returns INF. In this case, exp(x) is large enough (larger than 10^308)
+                     that the result overflows (larger than a floating point number can be)
+                     and the compiler considers log(1 + exp(INF)) = INF. 
+                  
+                     Solution: if x is large enough to overflow the EXP operation, then
+                               just return x.
+                            
+         Negative x: 
+   */
+      
    // code
    y = log(1 + exp(x));
 
