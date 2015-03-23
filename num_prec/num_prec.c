@@ -9,16 +9,20 @@ int main(void)
 {
    // Variable declarations
    double x,y;
+   double y_over;
+   double y_under;
    
    // Collect input
    x = get_input();
 
    // Calculate the result
    y = f(x);
+   y_over = f_over(x);
 
    // Print results
 
-   printf("Function f is: %f\n",y);
+   printf("Function f is     : %f\n",y);
+   printf("Function f_over is: %f\n",y_over);
    return 0;
 }
 
