@@ -2,6 +2,7 @@
 #include <math.h>
 
 double f(double);
+double f_over(double);
 double get_input();
 
 int main(void)
@@ -47,5 +48,23 @@ double f(double x)
    // code
    y = log(1 + exp(x));
 
+   return(y);
+}
+
+double f_over(double x)
+{
+   // Variable declarations
+   double y,X_MAX;
+   X_MAX = 1000.;
+
+   // calculation
+   if(x > X_MAX)
+   {
+      y = x;
+   }
+   else
+   {
+      y = log(1 + exp(x));
+   }
    return(y);
 }
