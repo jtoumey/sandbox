@@ -9,7 +9,6 @@ int main(void)
    // Variable declarations
    double x,y;
    
-
    // Collect input
    x = get_input();
 
@@ -18,7 +17,7 @@ int main(void)
 
    // Print results
 
-   printf("Function f is: %d",y);
+   printf("Function f is: %f\n",y);
    return 0;
 }
 
@@ -35,7 +34,7 @@ double get_input()
 
    // Read input
    printf("Enter argument: \n");
-   scanf ("%lf",arg);
+   scanf ("%lf",&arg);
 
    return(arg);
 }
