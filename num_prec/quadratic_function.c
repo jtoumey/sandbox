@@ -24,17 +24,19 @@
 #include <math.h>
 #include <float.h>
 
-double root_naive(double);
+double root_naive(double, double, double);
 
 int main(void)
 {
    //
    double a = 3.0, b = 1.0e9, c = 5.0;
-    
+   double r1
    //
    printf("Calculate the roots of: 3 * x^2 + 10^9 * x + 5 = 0\n");
    
    
+   printf("--- Naive Calculation ---\n");
+   printf("Root 1 (r1): \n");
    
    return(0);
 }
@@ -42,13 +44,24 @@ int main(void)
 
 /******************************************************************************
 * Function:    root_naive
+*
 * Description: naively calculates the roots of a quadratic equation using a 
 *              formula that fail due to limited floating point precision. 
-* Parameters:  , data type, and description>
-*              <variable2 name, data type, and description>
-* Return:      <data type and description>
+*
+* Parameters:  a   DOUBLE   quadratic eqn coef.
+*              b   DOUBLE   quadratic eqn coef.
+*              C   DOUBLE   quadratic eqn coef.
+*
+* Return:      r1  DOUBLE   first root
+*              r2  DOUBLE   second root
 ******************************************************************************/
 double root_naive(double a,double b, double c)
 {
+   //
+   double d  = b*b - 4.0*a*c;
+   double r1 = (-b - sqrt(d))/(2.0*a);
+   double r2 = (-b + sqrt(d))/(2.0*a);
    
+   //
+   return(r1,r2);
 }
