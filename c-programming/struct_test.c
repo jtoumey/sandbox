@@ -13,7 +13,10 @@ struct student
 
 // Function definitions
 void student_print(struct student);
-
+void student_print_ptr(struct student *s)
+{
+   printf("Age %d\n",s->age);
+}
 
 int main(void)
 {
@@ -43,7 +46,7 @@ int main(void)
    // print whole struct
    student_print(s);
    printf("=== Pointer ===\n");
-   student_print(sptr&);
+   student_print_ptr(sptr);
 
 }
 
