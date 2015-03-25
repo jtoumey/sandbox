@@ -25,6 +25,7 @@
 #include <float.h>
 
 void root_basic(double, double, double, double *r1, double *r2);
+void root_reform(double, double, double, double *r1, double *r2);
 
 int main(void)
 {
@@ -37,8 +38,13 @@ int main(void)
    root_basic(a, b, c, &root1, &root2);
    
    printf("=== Basic Calculation ===\n");
-   printf("\tRoot 1 (r1): %f\n",root1);
-   printf("\tRoot 1 (r1): %f\n",root2);
+   printf("\tRoot 1 (r1): %.10f\n",root1); // correct
+   printf("\tRoot 2 (r2): %.10f\n",root2); // returns '0', answer is -4.5e-8
+   //
+   root_reform(a, b, c, &root1, &root2);
+   printf("===== Re-formulate =====\n");
+   printf("\tRoot 1 (r1): %.10f\n",root1); //
+   printf("\tRoot 2 (r2): %.10f\n",root2); // 
    
    return(0);
 }
@@ -47,8 +53,8 @@ int main(void)
 /******************************************************************************
 * Function:    root_basic
 *
-* Description: naively calculates the roots of a quadratic equation using a 
-*              formula that fail due to limited floating point precision. 
+* Description: calculates the roots of a quadratic equation using a 
+*              formula that fails due to limited floating point precision. 
 *
 * Parameters:  a   DOUBLE   quadratic eqn coef.
 *              b   DOUBLE   quadratic eqn coef.
@@ -59,10 +65,29 @@ int main(void)
 ******************************************************************************/
 void root_basic(double a,double b, double c, double *r1, double *r2)
 {
-   //
+   // d >> a and c, so sqrt(d) is very close to b
    double d  = b*b - 4.0*a*c;
    *r1 = (-b - sqrt(d))/(2.0*a);
    *r2 = (-b + sqrt(d))/(2.0*a);
-   
-   //
+}
+/******************************************************************************
+* Function:    root_reform
+*
+* Description: calculates the roots of a quadratic equation using a 
+*              reformulated version of the quadratic equation that avoids
+*              subtracting small numbers. 
+*
+* Parameters:  a   DOUBLE   quadratic eqn coef.
+*              b   DOUBLE   quadratic eqn coef.
+*              C   DOUBLE   quadratic eqn coef.
+*
+* Return:      r1  DOUBLE   first root
+*              r2  DOUBLE   second root
+******************************************************************************/
+void root_reform(double a,double b, double c, double *r1, double *r2)
+{
+   // d >> a and c, so sqrt(d) is very close to b
+   double d  = b*b - 4.0*a*c;
+   *r1 = (-b - sqrt(d))/(2.0*a);
+   *r2 = -2.0*c/(b + sqrt(d));
 }
