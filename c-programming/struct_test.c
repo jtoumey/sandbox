@@ -42,6 +42,9 @@ int main(void)
 
    // print whole struct
    student_print(s);
+   printf("=== Pointer ===\n");
+   student_print(sptr&);
+
 }
 
 
