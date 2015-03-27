@@ -15,14 +15,14 @@ struct student
 void student_print(struct student);
 
 // 
-void student_print_ptr(struct student *s)
-{
-   printf("Name: %s\n",s->name);
-   printf("\tAge : %d\n",s->age);
-   printf("\tYear: %d\n",s->year);
-   printf("\tGPA : %f\n",s->gpa);
+void student_print_ptr(struct student *s);
+//{
+//   printf("Name: %s\n",s->name);
+//   printf("\tAge : %d\n",s->age);
+//   printf("\tYear: %d\n",s->year);
+//   printf("\tGPA : %f\n",s->gpa);
 
-}
+//}
 
 int main(void)
 {
@@ -64,3 +64,14 @@ void student_print(struct student st)
    printf("\tYear: %d\n ",st.year);
    printf("\tGPA : %f\n ",st.gpa);
 }
+
+//
+void student_print_ptr(struct student *s)
+{
+   printf("Name: %s\n",s->name);
+   printf("\tAge : %d\n",s->age);
+   printf("\tYear: %d\n",s->year);
+   printf("\tGPA : %f\n",s->gpa);
+
+}
+
