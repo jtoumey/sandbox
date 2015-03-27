@@ -1,12 +1,12 @@
 import sys
 import numpy as np
+import matplotlib.pyplot as plt
 from scipy.sparse import spdiags
 from scipy.sparse.linalg import spsolve
-import matplotlib.pyplot as plt
 from sympy import diff, lambdify, exp, sin
 from sympy.abc import u,x
 
-def fd_neumann(n,f,a,b,method)
+def fd_neumann(n,f,a,b,method):
    """ Solve the two-point bvp -u''(x) = f(x)
        on [0,1] with b.c. u'(0) = a and u(1) = b
        on n + 1 grid points """
