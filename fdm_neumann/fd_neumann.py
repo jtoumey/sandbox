@@ -2,7 +2,9 @@ import sys
 import numpy as np
 from scipy.sparse import spdiags
 from scipy.sparse.linalg import spsolve
-
+import matplotlib.pyplot as plt
+from sympy import diff, lambdify, exp, sin
+from sympy.abc import u,x
 
 def fd_neumann(n,f,a,b,method)
    """ Solve the two-point bvp -u''(x) = f(x)
@@ -46,12 +48,9 @@ def fd_neumann(n,f,a,b,method)
    return xi, u
 
 
-import matplotlib.pyplot as plt
-from sympy import diff, lambdify, exp, sin
-from sympy.abc import u,x
-
 if __name__ == '__main__':
-    n = int(sys.argv[1])        # Number of unknowns
+    #n = int(sys.argv[1])        # Number of unknowns
+    n = 200
     xi = np.linspace(0,1,n+1)   # Grid points
     
     u = exp(x)/(1+x)            # Manufactured solution to test methods
@@ -84,3 +83,4 @@ if __name__ == '__main__':
  
     plt.plot(xi,e1,xi,e2,xi,e3)
     plt.show()
+
